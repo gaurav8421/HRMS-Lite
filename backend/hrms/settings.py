@@ -150,7 +150,6 @@ REST_FRAMEWORK = {
 # CORS Configuration
 CORS_ALLOWED_ORIGINS = os.getenv(
     'CORS_ALLOWED_ORIGINS',
-    'https://hrms-lite-mu-nine.vercel.app',
     'http://localhost:3000,http://127.0.0.1:3000,http://localhost:5500,http://127.0.0.1:5500'
 ).split(',')
 
