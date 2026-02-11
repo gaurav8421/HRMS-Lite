@@ -78,30 +78,25 @@ WSGI_APPLICATION = 'hrms.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# Check if DATABASE_URL is provided (Render, Heroku, etc.)
-DATABASE_URL = os.getenv('DATABASE_URL')
+# # Check if DATABASE_URL is provided (Render, Heroku, etc.)
+# DATABASE_URL = os.getenv('DATABASE_URL')
 
-if DATABASE_URL:
-    # Parse DATABASE_URL for production
-    DATABASES = {
-        'default': dj_database_url.config(
-            default=DATABASE_URL,
-            conn_max_age=600,
-            conn_health_checks=True,
-            ssl_require=False,  # Render handles SSL internally
-        )
-    }
-else:
+# if DATABASE_URL:
+#     # Parse DATABASE_URL for production
+#     DATABASES = {
+#         'default': dj_database_url.config(
+#             default=DATABASE_URL,
+#             conn_max_age=600,
+#             conn_health_checks=True,
+#             ssl_require=False,  # Render handles SSL internally
+#         )
+#     }
+# else:
     # Use individual environment variables for local development
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv('DATABASE_NAME', 'hrms_db'),
-            'USER': os.getenv('DATABASE_USER', 'postgres'),
-            'PASSWORD': os.getenv('DATABASE_PASSWORD', ''),
-            'HOST': os.getenv('DATABASE_HOST', 'localhost'),
-            'PORT': os.getenv('DATABASE_PORT', '5432'),
-        }
+    'default': dj_database_url.parse(
+        "postgresql://hrms_user:7pevuUhBSmtfuiRimxhsupy3VY4KJiPj@dpg-d66e3v6mcj7s7389d020-a/hrms_db_qwoa"
+    )
     }
 
 # Password validation
