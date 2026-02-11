@@ -20,7 +20,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-change-this-in-production-
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 # ALLOWED_HOSTS configuration
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1','https://hrms-lite-mu-nine.vercel.app').split(',')
 # Add Render hostname if deployed
 RENDER_EXTERNAL_HOSTNAME = os.getenv('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
@@ -71,6 +71,10 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://hrms-lite-mu-nine.vercel.app",
 ]
 
 WSGI_APPLICATION = 'hrms.wsgi.application'
@@ -146,6 +150,7 @@ REST_FRAMEWORK = {
 # CORS Configuration
 CORS_ALLOWED_ORIGINS = os.getenv(
     'CORS_ALLOWED_ORIGINS',
+    'https://hrms-lite-mu-nine.vercel.app',
     'http://localhost:3000,http://127.0.0.1:3000,http://localhost:5500,http://127.0.0.1:5500'
 ).split(',')
 
