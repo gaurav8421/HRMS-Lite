@@ -93,11 +93,14 @@ WSGI_APPLICATION = 'hrms.wsgi.application'
 #     }
 # else:
     # Use individual environment variables for local development
-    DATABASES = {
+import dj_database_url
+
+DATABASES = {
     'default': dj_database_url.parse(
-        "postgresql://hrms_user:7pevuUhBSmtfuiRimxhsupy3VY4KJiPj@dpg-d66e3v6mcj7s7389d020-a/hrms_db_qwoa"
+        "postgresql://hrms_user:7pevuUhBSmtfuiRimxhsupy3VY4KJiPj@dpg-d66e3v6mcj7s7389d020-a:5432/hrms_db_qwoa"
     )
-    }
+}
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
