@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HRMS Lite - Modern Human Resource Management System">
+    <title>Dashboard - HRMS Lite</title>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">🚀</span>
+                    <span>HRMS Lite</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Dashboard</a></li>
+                    <li><a href="employees.html">Employees</a></li>
+                    <li><a href="attendance.html">Attendance</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">Dashboard</h1>
+                <p class="page-subtitle">Welcome to HRMS Lite - Your Modern HR Management Solution</p>
+            </div>
+
+            <!-- Alert Container -->
+            <div id="alertContainer"></div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid" id="statsGrid">
+                <!-- Stats cards will be dynamically loaded here -->
+                <div class="loading-container">
+                    <div class="spinner"></div>
+                    <p class="loading-text">Loading dashboard...</p>
+                </div>
+            </div>
+
+            <!-- Recent Attendance -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        📋 Recent Attendance
+                    </h2>
+                </div>
+
+                <div id="recentAttendanceContainer">
+                    <!-- Recent attendance will be loaded here -->
+                    <div class="loading-container">
+                        <div class="spinner"></div>
+                        <p class="loading-text">Loading recent attendance...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Config -->
+    <script>
+        // API Base URL - Change this in production
+        const API_BASE_URL = 'http://localhost:8000/api';
+    </script>
+
+    <!-- JavaScript -->
+    <script src="js/api.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

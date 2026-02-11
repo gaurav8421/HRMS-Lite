@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Attendance Management - HRMS Lite">
+    <title>Attendance - HRMS Lite</title>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">🚀</span>
+                    <span>HRMS Lite</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="employees.html">Employees</a></li>
+                    <li><a href="attendance.html" class="active">Attendance</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">Attendance Management</h1>
+                <p class="page-subtitle">Track employee attendance with ease</p>
+            </div>
+
+            <!-- Alert Container -->
+            <div id="alertContainer"></div>
+
+            <!-- Mark Attendance Form -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="card-title">✅ Mark Attendance</h2>
+                </div>
+
+                <form id="markAttendanceForm">
+                    <div class="grid grid-2">
+                        <div class="form-group">
+                            <label for="employeeId" class="form-label">Employee ID *</label>
+                            <input
+                                type="text"
+                                id="employeeId"
+                                name="employee_id"
+                                class="form-input"
+                                placeholder="e.g., EMP001"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date" class="form-label">Date *</label>
+                            <input
+                                type="date"
+                                id="date"
+                                name="date"
+                                class="form-input"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="status" class="form-label">Status *</label>
+                            <select id="status" name="status" class="form-select" required>
+                                <option value="">Select Status</option>
+                                <option value="Present">Present</option>
+                                <option value="Absent">Absent</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success" id="submitBtn">
+                        <span>✅</span>
+                        <span>Mark Attendance</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Filter Section -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="card-title">🔍 Filter Attendance</h2>
+                </div>
+
+                <div class="grid grid-2">
+                    <div class="form-group">
+                        <label for="filterEmployeeId" class="form-label">Employee ID</label>
+                        <input
+                            type="text"
+                            id="filterEmployeeId"
+                            class="form-input"
+                            placeholder="Filter by employee ID"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="filterDate" class="form-label">Date</label>
+                        <input
+                            type="date"
+                            id="filterDate"
+                            class="form-input"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="filterStatus" class="form-label">Status</label>
+                        <select id="filterStatus" class="form-select">
+                            <option value="">All Statuses</option>
+                            <option value="Present">Present</option>
+                            <option value="Absent">Absent</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="display: flex; align-items: flex-end;">
+                        <button type="button" class="btn btn-primary" id="applyFilterBtn" style="margin-right: 0.5rem;">
+                            🔍 Apply Filter
+                        </button>
+                        <button type="button" class="btn btn-secondary" id="clearFilterBtn">
+                            🔄 Clear
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attendance List -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        📋 Attendance Records
+                    </h2>
+                    <span class="badge badge-primary" id="attendanceCount">0 Records</span>
+                </div>
+
+                <div id="attendanceListContainer">
+                    <!-- Attendance list will be loaded here -->
+                    <div class="loading-container">
+                        <div class="spinner"></div>
+                        <p class="loading-text">Loading attendance records...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Config -->
+    <script>
+        // API Base URL - Change this in production
+        const API_BASE_URL = 'http://localhost:8000/api';
+    </script>
+
+    <!-- JavaScript -->
+    <script src="js/api.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/attendance.js"></script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Employee Management - HRMS Lite">
+    <title>Employees - HRMS Lite</title>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">🚀</span>
+                    <span>HRMS Lite</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="employees.html" class="active">Employees</a></li>
+                    <li><a href="attendance.html">Attendance</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">Employee Management</h1>
+                <p class="page-subtitle">Manage your workforce efficiently</p>
+            </div>
+
+            <!-- Alert Container -->
+            <div id="alertContainer"></div>
+
+            <!-- Add Employee Form -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="card-title">➕ Add New Employee</h2>
+                </div>
+
+                <form id="addEmployeeForm">
+                    <div class="grid grid-2">
+                        <div class="form-group">
+                            <label for="employeeId" class="form-label">Employee ID *</label>
+                            <input
+                                type="text"
+                                id="employeeId"
+                                name="employee_id"
+                                class="form-input"
+                                placeholder="e.g., EMP001"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fullName" class="form-label">Full Name *</label>
+                            <input
+                                type="text"
+                                id="fullName"
+                                name="full_name"
+                                class="form-input"
+                                placeholder="Enter full name"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address *</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                class="form-input"
+                                placeholder="employee@company.com"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="department" class="form-label">Department *</label>
+                            <input
+                                type="text"
+                                id="department"
+                                name="department"
+                                class="form-input"
+                                placeholder="e.g., IT, HR, Sales"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                        <span>➕</span>
+                        <span>Add Employee</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Employee List -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        👥 All Employees
+                    </h2>
+                    <span class="badge badge-primary" id="employeeCount">0 Employees</span>
+                </div>
+
+                <div id="employeeListContainer">
+                    <!-- Employee list will be loaded here -->
+                    <div class="loading-container">
+                        <div class="spinner"></div>
+                        <p class="loading-text">Loading employees...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Config -->
+    <script>
+        // API Base URL - Change this in production
+        const API_BASE_URL = 'http://localhost:8000/api';
+    </script>
+
+    <!-- JavaScript -->
+    <script src="js/api.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/employees.js"></script>
+</body>
+</html>
