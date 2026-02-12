@@ -10,28 +10,25 @@
      * Set active nav link based on current page
      */
     function setActiveNavLink() {
-        // Get current page filename
-        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        // Get current page filename (default to index.html if empty)
+        let currentPage = window.location.pathname.split('/').pop();
+        if (!currentPage || currentPage === '') {
+            currentPage = 'index.html';
+        }
 
         // Get all nav links
         const navLinks = document.querySelectorAll('.nav-links a');
 
-        // Remove active class from all links
+        // Remove active class from all links first
         navLinks.forEach(link => {
             link.classList.remove('active');
         });
 
-        // Add active class to matching link
+        // Add active class ONLY to the matching link
         navLinks.forEach(link => {
             const linkPage = link.getAttribute('href');
 
-            // Check if link matches current page
             if (linkPage === currentPage) {
-                link.classList.add('active');
-            }
-
-            // Handle index.html as default/root
-            if ((currentPage === '' || currentPage === 'index.html') && linkPage === 'index.html') {
                 link.classList.add('active');
             }
         });
